@@ -1,8 +1,7 @@
 class Solution {
 public:
     int removeElement(vector<int>& nums, int val) {
-
-        int pos = 0;
+        vector <int> v;
 
         int sz_nums = nums.size();
 
@@ -10,12 +9,25 @@ public:
         {
             if(nums[i] != val)
             {
-                nums[pos] = nums[i];
-                pos++;
+                v.push_back(nums[i]);
             }
         }
 
-        return pos;
+        int sz_v = v.size();
+
+        for(int i = 0; i < sz_nums; i++)
+        {
+            if(i < sz_v)
+            {
+                nums[i] = v[i];
+            }
+            else
+            {
+                nums[i] = 0;
+            }
+        }
+
+        return sz_v;
 
     }
 };
